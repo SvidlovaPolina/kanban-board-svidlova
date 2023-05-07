@@ -1,0 +1,36 @@
+.form {
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+}
+
+.input {
+	display: block;
+	border: 1px solid #465671;
+	border-radius: 8px;
+	margin-bottom: 7px;
+	padding: 8px;
+}
+
+.textarea {
+	resize: none;
+	font-family: 'Lato', sans-serif;
+}
+
+.submit {
+	background: #0079BF;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 0;
+	width: 102px;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 18px;
+	margin-top: 9px;
+	/*align-self: flex-end;*/
+}
+
+/*.submit:hover {
+	background: #5d7194;
+}*/
