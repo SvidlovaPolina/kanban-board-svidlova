@@ -4,7 +4,7 @@ import FormAddNewTask from '../forms/FormAddNewTask'
 import css from './List.module.css'
 
 const List = props => {
-	const {title, type, tasks, setTasks} = props
+	const {title, type, tasks, addNewTask} = props
 	const [isFormVisible, setFormVisible] = useState(false)
 
 	const handleClick = () => {
@@ -20,7 +20,7 @@ const List = props => {
 				)
 			})}
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
-				<FormAddNewTask />
+				<FormAddNewTask addNewTask={addNewTask} setFormVisible={setFormVisible} />
 			)}
 			<button className={css.addButton} onClick={handleClick}>+ Add card</button>
 		</div>
@@ -28,7 +28,3 @@ const List = props => {
 }
 
 export default List
-
-/* {type === LIST_TYPES.BACKLOG && (
-	<button className={css.addButton}>+ Add card</button>
-	)} */
