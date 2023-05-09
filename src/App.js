@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import Footer from './components/footer/Footer'
@@ -8,11 +9,13 @@ function App() {
     const [tasks, setTasks] = useState(data)
 
     return (
-        <div className='wrapper'>
-            <Header />
-            <Main tasks={tasks} setTasks={setTasks} />
-            <Footer tasks={tasks} />
-        </div>
+        <BrowserRouter>
+            <div className='wrapper'>
+                <Header />
+                <Main tasks={tasks} setTasks={setTasks} />
+                <Footer tasks={tasks} />
+            </div>
+        </BrowserRouter>
     )
 }
 
