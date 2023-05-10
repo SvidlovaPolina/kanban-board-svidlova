@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { LIST_TYPES } from '../../config'
+import { LIST_TYPES, LIST_COPY } from '../../config'
 import FormAddNewTask from '../forms/FormAddNewTask'
 import css from './List.module.css'
 
 const List = props => {
 	const {title, type, tasks, addNewTask} = props
 	const [isFormVisible, setFormVisible] = useState(false)
+	const [isSelectVisible, setSelectVisible] = useState(false)
 
 	const handleClick = () => {
 		setFormVisible(!isFormVisible)
+		setSelectVisible(!isSelectVisible)
 	}
 
 	return (
@@ -22,10 +24,20 @@ const List = props => {
 					</Link>
 				)
 			})}
+			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleClick}>+ Add card</button>}
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask addNewTask={addNewTask} setFormVisible={setFormVisible} />
 			)}
-			<button className={css.addButton} onClick={handleClick}>+ Add card</button>
+			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible && (
+				<select className={css.select} value={tasks.status}>
+					{Object.values(LIST_TYPES).map(type => {
+						return (
+							<option value={type}>{LIST_COPY[type]}</option>
+						)
+					})}
+				</select>
+			)}
+			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleClick}>+ Add task</button>}
 		</div>
 	)
 }

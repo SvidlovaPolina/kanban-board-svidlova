@@ -33,14 +33,9 @@
 	border-radius: 20px;
 }
 
-.label {
+/*.label {
 	margin-bottom: 10px;
-}
-
-.select {
-	padding: 8px;
-	border-radius: 8px;
-}
+}*/
 
 .homeLink {
 	display: block;
@@ -59,4 +54,21 @@
 
 .emptyStateIcon {
 	width: 200px;
+}
+
+.addButton {
+	background: none;
+	border: none;
+	appearance: none;
+	font-size: 15px;
+	color: #5E6C84;
+	margin-top: 15px;
+	cursor: pointer;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+.addButton:hover {
+	color: #000;
 }

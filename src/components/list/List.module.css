@@ -49,3 +49,8 @@
 .addButton:hover {
 	color: #000;
 }
+
+.select {
+	padding: 8px;
+	border-radius: 8px;
+}
