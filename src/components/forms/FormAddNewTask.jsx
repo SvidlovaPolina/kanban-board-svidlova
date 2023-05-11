@@ -1,5 +1,4 @@
 import { useState } from 'react'
-//import clsx from 'clsx'
 import css from './Forms.module.css'
 
 const FormAddNewTask = props => {
@@ -39,12 +38,3 @@ const FormAddNewTask = props => {
 }
 
 export default FormAddNewTask
-
-/*<textarea
-				className={clsx(css.input, css.textarea)}
-				id='taskDescription'
-				name='description'
-				placeholder='Enter task description'
-			/>*/
-
-// test commit

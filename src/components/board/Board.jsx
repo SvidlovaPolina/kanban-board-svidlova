@@ -6,10 +6,11 @@ import css from './Board.module.css'
 const Board = props => {
     const {tasks, setTasks} = props
 
-    const addNewTask = (title) => {
+    const addNewTask = (title, description) => {
 		const newTask = {
 			id: uniqid(),
 			title: title,
+            description: description,
 			created: new Date().toISOString(),
 			status: LIST_TYPES.BACKLOG,
 		}

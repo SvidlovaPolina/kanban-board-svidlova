@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { LIST_TYPES, LIST_COPY } from '../../config'
+import { LIST_TYPES } from '../../config'
 import FormAddNewTask from '../forms/FormAddNewTask'
 import css from './List.module.css'
 
@@ -28,16 +28,16 @@ const List = props => {
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask addNewTask={addNewTask} setFormVisible={setFormVisible} />
 			)}
+			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleClick}>+ Add task</button>}
 			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible && (
-				<select className={css.select} value={tasks.status}>
-					{Object.values(LIST_TYPES).map(type => {
+				<select className={css.select} value={tasks.title}>
+					{tasks.map(title => {
 						return (
-							<option value={type}>{LIST_COPY[type]}</option>
+							<option value={title}>{LIST_TYPES.BACKLOG}</option>
 						)
 					})}
 				</select>
 			)}
-			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleClick}>+ Add task</button>}
 		</div>
 	)
 }

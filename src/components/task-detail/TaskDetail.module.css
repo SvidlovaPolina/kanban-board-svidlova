@@ -38,14 +38,18 @@
 }*/
 
 .homeLink {
-	display: block;
-	margin: 20px 0;
+	/*margin: 20px 0;*/
 	text-decoration: none;
 	color: #737373;
 }
 
 .homeLink:hover {
 	color: #000;
+}
+
+.close {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .emptyState {
