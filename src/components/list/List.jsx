@@ -30,10 +30,10 @@ const List = props => {
 			)}
 			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleClick}>+ Add task</button>}
 			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible && (
-				<select className={css.select} value={tasks.title}>
-					{tasks.map(title => {
+				<select className={css.select}>
+					{tasks.map(task => {
 						return (
-							<option value={title}>{LIST_TYPES.BACKLOG}</option>
+							<option value={title}>{title}</option>
 						)
 					})}
 				</select>
