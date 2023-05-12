@@ -9,26 +9,33 @@ const List = props => {
 	const [isFormVisible, setFormVisible] = useState(false)
 	const [isSelectVisible, setSelectVisible] = useState(false)
 
-	const handleClick = () => {
+	const handleAddNewClick = () => {
 		setFormVisible(!isFormVisible)
 		setSelectVisible(!isSelectVisible)
+	}
+
+	const formSubmit = (title, description) => {
+		addNewTask(title, description)
+		setFormVisible(false)
 	}
 
 	return (
 		<div className={css.list}>
 			<h2 className={css.listTitle}>{title}</h2>
-			{tasks.map(task => {
-				return (
-					<Link to={`/tasks/${task.id}`} className={css.taskLink}>
-						<div key={task.id} className={css.task}>{task.title}</div>
+			{tasks.length? 
+				tasks.map(task => 
+					<Link to={`/tasks/${task.id}`} key={task.id} className={css.taskLink}>
+						<div className={css.task}>{task.title}</div>
 					</Link>
-				)
-			})}
-			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleClick}>+ Add card</button>}
+			) : 
+				<p>No tasks added yet</p>
+			}
+
+			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleAddNewClick}>+ Add card</button>}
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
-				<FormAddNewTask addNewTask={addNewTask} setFormVisible={setFormVisible} />
+				<FormAddNewTask formSubmit={formSubmit} />
 			)}
-			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleClick}>+ Add task</button>}
+			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleAddNewClick}>+ Add task</button>}
 			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible && (
 				<select className={css.select}>
 					{tasks.map(task => {
