@@ -13,13 +13,13 @@ function App() {
     }, [tasks])
 
     return (
-		<div className='wrapper'>
-			<Router>
-				<Header />
-				<Main tasks={tasks} setTasks={setTasks} />
-				<Footer tasks={tasks} />
-			</Router>
-		</div>
+		  <div className='wrapper'>
+        <Router>
+          <Header />
+          <Main tasks={tasks} setTasks={setTasks} />
+          <Footer tasks={tasks} />
+        </Router>
+		  </div>
   )
 }
 

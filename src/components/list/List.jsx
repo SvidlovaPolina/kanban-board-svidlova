@@ -35,8 +35,8 @@ const List = props => {
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask formSubmit={formSubmit} />
 			)}
-			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleAddNewClick}>+ Add task</button>}
-			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible && (
+			{type === LIST_TYPES.READY && <button className={css.addButton} onClick={handleAddNewClick}>+ Add task</button>}
+			{type === LIST_TYPES.READY && isSelectVisible && (
 				<select className={css.select}>
 					{tasks.map(task => {
 						return (

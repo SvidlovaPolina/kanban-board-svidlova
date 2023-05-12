@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import css from './Forms.module.css'
 
 const FormAddDescription = props => {
-    const {addNewTask, setFormDescriptionVisible} = props
+    const {formSubmit, setFormDescriptionVisible} = props
     const [values, setValues] = useState({
 		description: '',
 	})
@@ -16,7 +16,7 @@ const FormAddDescription = props => {
     const descriptionSubmit = (e) => {
 		e.preventDefault()
 		if (values.description) {
-			addNewTask(values.description)
+			formSubmit(values.description)
 		}
 		setFormDescriptionVisible(false)
 	}
