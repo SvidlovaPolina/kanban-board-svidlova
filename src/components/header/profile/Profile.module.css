@@ -1,0 +1,38 @@
+.profile {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  
+    .chevron {
+        &.up > svg {
+        transform: scaleY(-1);
+      }
+    }
+  
+    .menu {
+      position: fixed;
+      top: 48px;
+      right: 16px;
+      min-width: 120px;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 4px;
+      padding: 8px 9px;
+    }
+  }
+
+  .items {
+    border-radius: 5px;
+    margin: 3px 0;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+  }
+
+  .items:hover {
+    cursor: pointer;
+    background-color: #EBECF0;
+  }
