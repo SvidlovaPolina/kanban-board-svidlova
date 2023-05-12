@@ -2,7 +2,7 @@ import { useState } from 'react'
 import css from './Forms.module.css'
 
 const FormAddNewTask = props => {
-	const {addNewTask, setFormVisible} = props
+	const {formSubmit} = props
 	const [values, setValues] = useState({
 		title: '',
 	})
@@ -15,9 +15,8 @@ const FormAddNewTask = props => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (values.title) {
-			addNewTask(values.title)
+			formSubmit(values.title)
 		}
-		setFormVisible(false)
 		//обработать пустое значение title, чтобы пользователь понял, что пустая задача не добавится
 	}
 
