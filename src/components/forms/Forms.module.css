@@ -28,9 +28,10 @@
 	font-weight: 500;
 	font-size: 18px;
 	margin-top: 9px;
-	/*align-self: flex-end;*/
 }
 
-/*.submit:hover {
-	background: #5d7194;
-}*/
+.backlogButtons {
+	display: flex;
+    width: 214px;
+    justify-content: space-between;
+}

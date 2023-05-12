@@ -31,7 +31,10 @@ const FormAddNewTask = props => {
 				value={values.title}
 				onChange={handleChange}
 			/>
-			<button className={css.submit} type='submit'>Submit</button>
+			<div className={css.backlogButtons}>
+				<button className={css.submit} type='submit'>Submit</button>
+				<button className={css.submit} type='submit'>Cancel</button>
+			</div>
 		</form>
 	)
 }
