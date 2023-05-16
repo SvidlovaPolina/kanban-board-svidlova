@@ -9,8 +9,8 @@ const Board = (props) => {
     const addNewTask = (title, description) => {
 		const task = {
 			id: uniqid(),
-			title,
-            description,
+			title: title,
+            description: description,
 			created: new Date().toISOString(),
 			status: 'backlog',
 		}
@@ -32,7 +32,7 @@ const Board = (props) => {
 					/>
 				)
 			})
-		}
+			}
         </div>
     )
 }
