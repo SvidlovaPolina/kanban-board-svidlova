@@ -18,6 +18,9 @@ const FormAddNewTask = props => {
 			formSubmit(values.title)
 		}
 		//обработать пустое значение title, чтобы пользователь понял, что пустая задача не добавится
+		if (values.title === '') {
+			<p>Please fill in the field</p>
+		}
 	}
 
 	return (

@@ -36,6 +36,7 @@ const List = props => {
 	return (
 		<div className={css.list}>
 			<h2 className={css.listTitle}>{title}</h2>
+			<div className={css.scroll}>
 			{tasks.length? 
 				tasks.map(task => 
 					<Link to={`/tasks/${task.id}`} key={task.id} className={css.taskLink}>
@@ -44,7 +45,8 @@ const List = props => {
 			) : 
 				<p>No tasks added yet</p>
 			}
-
+			</div>
+			
 			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleAddNewClick}>+ Add card</button>}
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask formSubmit={formSubmit} />
