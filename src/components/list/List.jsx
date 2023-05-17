@@ -11,6 +11,9 @@ const List = props => {
 
 	const handleAddNewClick = () => {
 		setFormVisible(!isFormVisible)
+	}
+
+	const handleSelectClick = () => {
 		setSelectVisible(!isSelectVisible)
 	}
 
@@ -22,6 +25,7 @@ const List = props => {
 			return task
 		  })
 		  setTasks(updatedTasks)
+		  setSelectVisible(false)
 	}
 
 	const formSubmit = (title, description) => {
@@ -41,12 +45,12 @@ const List = props => {
 				<p>No tasks added yet</p>
 			}
 
-			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleAddNewClick}>+ Add card</button>} 
+			{type === LIST_TYPES.BACKLOG && <button className={css.addButton} onClick={handleAddNewClick}>+ Add card</button>}
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask formSubmit={formSubmit} />
 			)}
-			{type === LIST_TYPES.READY && <button className={css.addButton} onClick={handleAddNewClick}>+ Add task</button>}
-			{type === LIST_TYPES.READY && 
+			{type === LIST_TYPES.READY && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+			{type === LIST_TYPES.READY && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
 				<option>choose</option>
 				{
@@ -57,7 +61,8 @@ const List = props => {
 			</select>
 			}
 
-			{type === LIST_TYPES.IN_PROGRESS && 
+			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
 				<option>choose</option>
 				{
@@ -68,7 +73,8 @@ const List = props => {
 			</select>
 			}
 
-			{type === LIST_TYPES.FINISHED && 
+			{type === LIST_TYPES.FINISHED && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+			{type === LIST_TYPES.FINISHED && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
 				<option>choose</option>
 				{
