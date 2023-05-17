@@ -28,7 +28,6 @@ const TaskDetail = (props) => {
 				{isFormDescriptionVisible && (
 					<FormAddDescription addNewTask={addNewTask} setFormDescriptionVisible={setFormDescriptionVisible} />
 				)}
-
 			</>
 		)
 	}

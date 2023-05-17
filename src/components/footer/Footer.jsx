@@ -6,10 +6,13 @@ function Footer(props) {
 	return (
 		<footer className={css.footer}>
 			<div className={css.counts}>
-				{Object.values(LIST_TYPES).map(type => {
+				{Object.values(LIST_TYPES).filter(t => t === 'finished' || t === 'backlog').map(type => {
 					const listTasks = tasks.filter(task => task.status === type)
+					let name;
+					if(type === 'backlog') name = 'Active tasks';
+					if(type === 'finished') name = 'Finished tasks';
 					return (
-						<p key={LIST_COPY[type]} className={css.count}>{LIST_COPY[type]}: {listTasks.length}</p>
+						<p key={LIST_COPY[type]} className={css.count}>{name}: {listTasks.length}</p>
 					)
 				})}
 			</div>

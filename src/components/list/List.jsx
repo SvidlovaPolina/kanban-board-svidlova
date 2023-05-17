@@ -5,10 +5,9 @@ import FormAddNewTask from '../forms/FormAddNewTask'
 import css from './List.module.css'
 
 const List = props => {
-	const {title, type, tasks, addNewTask} = props
+	const {title, type, tasks, addNewTask, allTasks, setTasks} = props
 	const [isFormVisible, setFormVisible] = useState(false)
 	const [isSelectVisible, setSelectVisible] = useState(false)
-	const [value, setValue] = useState('');
 
 	const handleAddNewClick = () => {
 		setFormVisible(!isFormVisible)
@@ -16,12 +15,14 @@ const List = props => {
 	}
 
 	const handleSelectChange = (e) => {
-		setValue(e.target.value)
+		const updatedTasks = allTasks.map(task => {
+			if (task.id === e.target.value) {
+			  return {...task, status: type}
+			}
+			return task
+		  })
+		  setTasks(updatedTasks)
 	}
-
-	/*const options = tasks.map(task => {
-		return <option>{task.title}</option>;
-	});*/
 
 	const formSubmit = (title, description) => {
 		addNewTask(title, description)
@@ -45,29 +46,40 @@ const List = props => {
 				<FormAddNewTask formSubmit={formSubmit} />
 			)}
 			{type === LIST_TYPES.READY && <button className={css.addButton} onClick={handleAddNewClick}>+ Add task</button>}
-			{type === LIST_TYPES.READY && <select key={tasks} className={css.select} onChange={handleSelectChange} value={value}>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			</select>}
+			{type === LIST_TYPES.READY && 
+			<select key={tasks} className={css.select} onChange={handleSelectChange}>
+				<option>choose</option>
+				{
+					allTasks.filter(task => task.status === "backlog").map(task => {
+						return <option key={task.id} value={task.id}>{task.title}</option>
+					})
+				}
+			</select>
+			}
+
+			{type === LIST_TYPES.IN_PROGRESS && 
+			<select key={tasks} className={css.select} onChange={handleSelectChange}>
+				<option>choose</option>
+				{
+					allTasks.filter(task => task.status === "ready").map(task => {
+						return <option key={task.id} value={task.id}>{task.title}</option>
+					})
+				}
+			</select>
+			}
+
+			{type === LIST_TYPES.FINISHED && 
+			<select key={tasks} className={css.select} onChange={handleSelectChange}>
+				<option>choose</option>
+				{
+					allTasks.filter(task => task.status === "inProgress").map(task => {
+						return <option key={task.id} value={task.id}>{task.title}</option>
+					})
+				}
+			</select>
+			}
 		</div>
 	)
 }
 
 export default List
-
-/*<select className={css.select}>
-					{tasks.map(task => {
-						return (
-							<option value={title}>{title}</option>
-						)
-					})}
-				</select>*/
-
-/*{tasks.length?
-					tasks.map(task =>
-						<select className={css.select}>{task.title}</select>
-			) :
-				<p>No tasks</p>
-			}*/
