@@ -28,8 +28,8 @@ const List = props => {
 		  setSelectVisible(false)
 	}
 
-	const formSubmit = (title, description) => {
-		addNewTask(title, description)
+	const formSubmit = (title) => {
+		addNewTask(title)
 		setFormVisible(false)
 	}
 

@@ -2,16 +2,26 @@ import { useState } from 'react'
 import { useRouteMatch, Link } from 'react-router-dom'
 import { formatDate } from '../../utils'
 import notFoundIcon from '../../assets/not-found.svg'
-import FormAddDescription from '../forms/FormAddNewTask'
+import FormAddDescription from '../forms/FormAddDescription'
 import css from './TaskDetail.module.css'
 
 const TaskDetail = (props) => {
 	const match = useRouteMatch()
 	const {taskId} = match.params
-	const {tasks, addNewTask} = props
+	const {tasks, setTasks} = props
 	const task = tasks.find(task => task.id === taskId)
 	const [isFormDescriptionVisible, setFormDescriptionVisible] = useState(false)
 
+	const updateDescription = (description) => {
+		const updatedTasks = tasks.map(task => {
+			if (task.id === taskId) {
+			  return {...task, description: description}
+			}
+			return task
+		  })
+		  setTasks(updatedTasks)
+	}
+	
 	const AddDescriptionClick = () => {
 		setFormDescriptionVisible(!isFormDescriptionVisible)
 	}
@@ -23,7 +33,7 @@ const TaskDetail = (props) => {
 				<p>Description: {task.description || 'This task has no description'}</p>
 				<button className={css.addButton} onClick={AddDescriptionClick}>+ Add description</button>
 				{isFormDescriptionVisible && (
-					<FormAddDescription addNewTask={addNewTask} setFormDescriptionVisible={setFormDescriptionVisible} />
+					<FormAddDescription updateDescription={updateDescription} currentDescription={task.description} setFormDescriptionVisible={setFormDescriptionVisible} />
 				)}
 			</>
 		)
