@@ -13,10 +13,6 @@
 .title {
 	margin: 0;
 	font-family: 'Roboto';
-	/* font-style: normal;
-	font-weight: 400;
-	font-size: 28px;
-	line-height: 33px; */
 }
 
 .createdAt {
@@ -33,23 +29,13 @@
 	border-radius: 20px;
 }
 
-/*.label {
-	margin-bottom: 10px;
-}*/
-
 .homeLink {
-	/*margin: 20px 0;*/
 	text-decoration: none;
 	color: #737373;
 }
 
 .homeLink:hover {
 	color: #000;
-}
-
-.close {
-	display: flex;
-	justify-content: flex-end;
 }
 
 .emptyState {
@@ -66,7 +52,7 @@
 	appearance: none;
 	font-size: 15px;
 	color: #5E6C84;
-	margin-top: 15px;
+	/*margin-top: 15px;*/
 	cursor: pointer;
 	font-weight: 400;
 	font-size: 18px;

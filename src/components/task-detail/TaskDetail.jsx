@@ -19,9 +19,6 @@ const TaskDetail = (props) => {
 	const renderTaskDetails = () => {
 		return (
 			<>
-				<div className={css.header}>
-					<h2 className={css.title}>{task.title}</h2>
-				</div>
 				<p className={css.createdAt}>Created at: {formatDate(task.created)}</p>
 				<p>Description: {task.description || 'This task has no description'}</p>
 				<button className={css.addButton} onClick={AddDescriptionClick}>+ Add description</button>
@@ -44,7 +41,8 @@ const TaskDetail = (props) => {
 	return (
 		<>
 			<div className={css.wrapper}>
-			<div className={css.close}>
+			<div className={css.header}>
+				<h2 className={css.title}>{task.title}</h2>
 				<Link to='/' className={css.homeLink}>&#9587;</Link>
 			</div>
 				{task ? renderTaskDetails() : renderEmptyState()}
