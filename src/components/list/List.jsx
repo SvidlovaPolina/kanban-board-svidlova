@@ -33,6 +33,10 @@ const List = props => {
 		setFormVisible(false)
 	}
 
+	const emptyBacklog = allTasks.filter(task => task.status === "backlog").length === 0
+	const emptyReady = allTasks.filter(task => task.status === "ready").length === 0
+	const emptyInProgress = allTasks.filter(task => task.status === "inProgress").length === 0
+
 	return (
 		<div className={css.list}>
 			<h2 className={css.listTitle}>{title}</h2>
@@ -51,10 +55,12 @@ const List = props => {
 			{type === LIST_TYPES.BACKLOG && isFormVisible && (
 				<FormAddNewTask formSubmit={formSubmit} />
 			)}
-			{type === LIST_TYPES.READY && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+
+			<div className={css.lists}>
+			{type === LIST_TYPES.READY && <button className={css.addButton} disabled={emptyBacklog} onClick={handleSelectClick}>+ Add task</button>}
 			{type === LIST_TYPES.READY && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
-				<option>choose</option>
+				<option>Сhoose task</option>
 				{
 					allTasks.filter(task => task.status === "backlog").map(task => {
 						return <option key={task.id} value={task.id}>{task.title}</option>
@@ -62,11 +68,13 @@ const List = props => {
 				}
 			</select>
 			}
+			</div>
 
-			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+			<div className={css.lists}>
+			{type === LIST_TYPES.IN_PROGRESS && <button className={css.addButton} disabled={emptyReady} onClick={handleSelectClick}>+ Add task</button>}
 			{type === LIST_TYPES.IN_PROGRESS && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
-				<option>choose</option>
+				<option>Сhoose task</option>
 				{
 					allTasks.filter(task => task.status === "ready").map(task => {
 						return <option key={task.id} value={task.id}>{task.title}</option>
@@ -74,11 +82,13 @@ const List = props => {
 				}
 			</select>
 			}
+			</div>
 
-			{type === LIST_TYPES.FINISHED && <button className={css.addButton} onClick={handleSelectClick}>+ Add task</button>}
+			<div className={css.lists}>
+			{type === LIST_TYPES.FINISHED && <button className={css.addButton} disabled={emptyInProgress} onClick={handleSelectClick}>+ Add task</button>}
 			{type === LIST_TYPES.FINISHED && isSelectVisible &&
 			<select key={tasks} className={css.select} onChange={handleSelectChange}>
-				<option>choose</option>
+				<option>Сhoose task</option>
 				{
 					allTasks.filter(task => task.status === "inProgress").map(task => {
 						return <option key={task.id} value={task.id}>{task.title}</option>
@@ -86,6 +96,7 @@ const List = props => {
 				}
 			</select>
 			}
+			</div>
 		</div>
 	)
 }
